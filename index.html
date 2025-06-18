@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Batalla del Cableado - Colegio San Ignacio de Loyola</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        /* Estilos mejorados para la navegación principal */
+        .main-nav {
+            background: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark);
+            background-color: #f8f9fa;
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .nav-link::before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-link:hover::before {
+            background-color: white;
+        }
+        
+        /* Colores de fondo diferentes para cada enlace */
+        .nav-item:nth-child(1) .nav-link { background-color: #e3f2fd; }
+        .nav-item:nth-child(2) .nav-link { background-color: #e8f5e9; }
+        .nav-item:nth-child(3) .nav-link { background-color: #fff8e1; }
+        .nav-item:nth-child(4) .nav-link { background-color: #f3e5f5; }
+        .nav-item:nth-child(5) .nav-link { background-color: #e0f7fa; }
+        
+        .nav-item:nth-child(1) .nav-link:hover { background-color: #1e88e5; }
+        .nav-item:nth-child(2) .nav-link:hover { background-color: #43a047; }
+        .nav-item:nth-child(3) .nav-link:hover { background-color: #ffa000; }
+        .nav-item:nth-child(4) .nav-link:hover { background-color: #8e24aa; }
+        .nav-item:nth-child(5) .nav-link:hover { background-color: #00acc1; }
+
+        /* Estilos para las secciones de contenido */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin: 30px 0;
+            scroll-margin-top: 100px;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        h3 {
+            color: var(--primary);
+            margin-top: 25px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .color-code {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .color-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .color-box {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .quiz-section {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--secondary);
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px 10px 0;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .materials-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .material-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 280px;
+            transition: transform 0.3s ease;
+        }
+        
+        .material-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-link {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .material-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>La Batalla del Cableado</h1>
+            <div class="authors">Chicaiza Erick - Coro Nathaly</div>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#cable-cruzado" class="nav-link">Cable Cruzado</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#cable-directo" class="nav-link">Cable Directo</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#materiales" class="nav-link">Materiales</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#comparacion" class="nav-link">Comparación</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#videos" class="nav-link">Videos Tutoriales</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- Sección Cable Cruzado -->
+        <section id="cable-cruzado" class="content-section">
+            <h2>¿Qué es y para qué sirve el cable cruzado?</h2>
+            <p>Un cable cruzado es un cable que interconecta todas las señales de salida en un conector con las señales de entrada en el otro conector y viceversa permitiendo a dos dispositivos electrónicos conectarse entre sí con una comunicación full duplex. También permite transmisión confiable vía una conexión Ethernet.</p>
+            <p><strong>No sirve para conectar dispositivos igualitarios como dos computadoras.</strong></p>
+            
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BbGLp-QTtXE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <h3>¿Cómo construir un cable cruzado?</h3>
+            
+            <h4>Pasos para construir un cable cruzado</h4>
+            <ol>
+                <li>Cortar cubierta del cable a 5 o 6 cm de un extremo</li>
+                <li>Cuando ya esté cortado dar un tirón rápidamente para que se desprenda</li>
+                <li>Separar los cuatro pares de cables trenzados:
+                    <ul>
+                        <li>El cable color blanco con el cable naranja</li>
+                        <li>Un cable blanco queda solo</li>
+                        <li>El cable color blanco con el cable azul</li>
+                        <li>El cable verde queda solo</li>
+                        <li>El cable color blanco con el marrón</li>
+                    </ul>
+                </li>
+                <li>Tomar los cables por los dedos sin soltar y estirarlos todos</li>
+                <li>Poner los cables paralelamente sin soltar para que no cambien de posición</li>
+                <li>Asegurar que los conductores individuales tengan aproximadamente 14mm de longitud</li>
+                <li>Meter los cables dentro del conector sin aflojar la presión</li>
+                <li>Empujar los cables hasta que lleguen al tope de su carril</li>
+                <li>Sujetar muy cerca del conector apretando la camisa gris sobre los cables interiores</li>
+                <li>Meter el conector en la herramienta de crimpar y apretar fuertemente</li>
+                <li>Comprobar que los cables lleguen hasta el final de los carriles</li>
+                <li>Repetir los pasos para el otro extremo del cable, pero con esta configuración:
+                    <ul>
+                        <li>El blanco con el verde</li>
+                        <li>Un cable blanco queda solo</li>
+                        <li>El cable blanco con el azul</li>
+                        <li>El cable naranja queda solo</li>
+                        <li>El cable blanco con el marrón</li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h4>Configuración final de los conectores</h4>
+            <div class="color-code">
+                <div>
+                    <h5>Conector normal:</h5>
+                    <div class="color-item"><div class="color-box" style="background-color: #FFA500;"></div><span>1 - Blanco pareja de naranja</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #FFA500;"></div><span>2 - Naranja</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #008000;"></div><span>3 - Blanco pareja de verde</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #0000FF;"></div><span>4 - Azul</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #0000FF;"></div><span>5 - Blanco pareja de azul</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #008000;"></div><span>6 - Verde</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #8B4513;"></div><span>7 - Blanco pareja de marrón</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #8B4513;"></div><span>8 - Marrón</span></div>
+                </div>
+                
+                <div>
+                    <h5>Conector cruzado:</h5>
+                    <div class="color-item"><div class="color-box" style="background-color: #008000;"></div><span>1 - Blanco pareja de verde</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #008000;"></div><span>2 - Verde</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #FFA500;"></div><span>3 - Blanco pareja de naranja</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #0000FF;"></div><span>4 - Azul</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #0000FF;"></div><span>5 - Blanco pareja de azul</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #FFA500;"></div><span>6 - Naranja</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #8B4513;"></div><span>7 - Blanco pareja de marrón</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #8B4513;"></div><span>8 - Marrón</span></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Cable Directo -->
+        <section id="cable-directo" class="content-section">
+            <h2>¿Qué es el cable directo y para qué sirve?</h2>
+            <p>El cable directo de red sirve para conectar dispositivos desiguales, como un computador con un hub o switch. En este caso ambos extremos del cable deben tener la misma distribución.</p>
+            <p>Además este tipo de cable normalmente se utiliza para poder conectar dos switch o un hub y un switch. Como lo sería: poner un switch en línea con un hub o otro switch.</p>
+            
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4XGvudb0FFc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <h3>Pasos para construir el cable directo</h3>
+            <ol>
+                <li>Cortar la cubierta del cable a unos 5 o 6 cm de un extremo</li>
+                <li>Cuando ya esté cortado dar un tirón rápidamente, para que se desprenda</li>
+                <li>Separar los cables para acomodarlos en este orden (EIA/TIA-568B):
+                    <ul>
+                        <li>Blanco/Naranja Pin 1</li>
+                        <li>Naranja Pin 2</li>
+                        <li>Blanco/Verde Pin 3</li>
+                        <li>Azul Pin 4</li>
+                        <li>Blanco/Azul Pin 5</li>
+                        <li>Verde Pin 6</li>
+                        <li>Blanco/Marrón Pin 7</li>
+                        <li>Marrón Pin 8</li>
+                    </ul>
+                </li>
+                <li>Meter los cables dentro del conector sin aflojar la presión</li>
+                <li>Empujar los cables hasta que lleguen al tope de su carril</li>
+                <li>Sujetar muy cerca del conector apretando la camisa gris sobre los cables interiores</li>
+                <li>Meter el conector en la herramienta de crimpar y apretar fuertemente</li>
+                <li>Repetir los mismos pasos para el otro extremo del cable con la misma configuración</li>
+            </ol>
+            
+            <h4>Configuración estándar EIA/TIA-568B</h4>
+            <div class="color-code">
+                <div>
+                    <div class="color-item"><div class="color-box" style="background-color: #FFA500;"></div><span>1 - Blanco/Naranja</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #FFA500;"></div><span>2 - Naranja</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #008000;"></div><span>3 - Blanco/Verde</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #0000FF;"></div><span>4 - Azul</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #0000FF;"></div><span>5 - Blanco/Azul</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #008000;"></div><span>6 - Verde</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #8B4513;"></div><span>7 - Blanco/Marrón</span></div>
+                    <div class="color-item"><div class="color-box" style="background-color: #8B4513;"></div><span>8 - Marrón</span></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Materiales -->
+        <section id="materiales" class="content-section">
+            <h2>Materiales</h2>
+            <ul>
+                <li>6 mts de cable UTP cat.5 de cuatro pares</li>
+                <li>Conectores RJ45</li>
+                <li>Herramienta de crimpar</li>
+                <li>Tijeras de electricista</li>
+                <li>Probador de cables (opcional pero recomendado)</li>
+            </ul>
+            
+            <div class="materials-grid">
+                <div class="material-container">
+                    <h3>➱ Crimpadora</h3>
+                    <p>Herramienta utilizada para cortar, pelar y crimpar cables de red, especialmente para instalar conectores RJ45.</p>
+                </div>
+                
+                <div class="material-container">
+                    <h3>➱ Cable Ethernet</h3>
+                    <p>Cable de par trenzado usado para conectar dispositivos dentro de una red local (LAN), comúnmente tipo Cat 5e o Cat 6.</p>
+                </div>
+                
+                <div class="material-container">
+                    <h3>➱ Conectores RJ45</h3>
+                    <p>Conectores modulares utilizados en los extremos de los cables Ethernet para establecer conexión física entre dispositivos de red.</p>
+                </div>
+                
+                <div class="material-container">
+                    <h3>➱ Tijeras de electricista</h3>
+                    <p>Herramienta útil para cortar y pelar cables con precisión.</p>
+                </div>
+                
+                <div class="material-container">
+                    <h3>➱ Probador de cables</h3>
+                    <p>Dispositivo que permite verificar la correcta conexión y continuidad de los cables de red.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Comparación -->
+        <section id="comparacion" class="content-section">
+            <h2>Comparación entre Cable Cruzado y Cable Directo</h2>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Característica</th>
+                    <th>Cable Cruzado</th>
+                    <th>Cable Directo</th>
+                </tr>
+                <tr>
+                    <td>Configuración de pines</td>
+                    <td>Un extremo T568A y otro T568B</td>
+                    <td>Mismo estándar en ambos extremos (T568A o T568B)</td>
+                </tr>
+                <tr>
+                    <td>Uso principal</td>
+                    <td>Conectar dispositivos similares (PC a PC, switch a switch)</td>
+                    <td>Conectar dispositivos diferentes (PC a switch, PC a router)</td>
+                </tr>
+                <tr>
+                    <td>Transmisión y recepción</td>
+                    <td>Los pares TX y RX están cruzados</td>
+                    <td>Los pares TX y RX van directos</td>
+                </tr>
+                <tr>
+                    <td>Complejidad</td>
+                    <td>Más complejo de fabricar</td>
+                    <td>Más sencillo de fabricar</td>
+                </tr>
+                <tr>
+                    <td>Uso actual</td>
+                    <td>Menos común (dispositivos modernos tienen Auto-MDI-X)</td>
+                    <td>Muy común, estándar en la mayoría de conexiones</td>
+                </tr>
+            </table>
+            
+            <div class="quiz-section">
+                <h3>¿Sabes cuándo usar cada tipo de cable?</h3>
+                <div>
+                    <p>1. ¿Qué cable usarías para conectar una computadora a un switch?</p>
+                    <button class="btn" onclick="checkAnswer(this, 'correct')">Cable Directo</button>
+                    <button class="btn" onclick="checkAnswer(this, 'wrong')">Cable Cruzado</button>
+                </div>
+                <div>
+                    <p>2. ¿Qué cable usarías para conectar dos computadoras directamente?</p>
+                    <button class="btn" onclick="checkAnswer(this, 'wrong')">Cable Directo</button>
+                    <button class="btn" onclick="checkAnswer(this, 'correct')">Cable Cruzado</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Videos -->
+        <section id="videos" class="content-section">
+            <h2>Videos Tutoriales</h2>
+            
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BbGLp-QTtXE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>Cómo hacer un cable cruzado</h3>
+            
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4XGvudb0FFc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>Cómo hacer un cable directo</h3>
+            
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6Zc_0s9Hn8I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3>Diferencia entre cables</h3>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Colegio San Ignacio de Loyola</p>
+            <p>© 2025 La batalla del cableado</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Función para manejar el scroll suave
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Actualizar la URL
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+        
+        // Resaltar enlace activo al hacer scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY + 100;
+            
+            document.querySelectorAll('.content-section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === #${sectionId}) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Función para el quiz
+        function checkAnswer(button, result) {
+            if (result === 'correct') {
+                button.style.backgroundColor = '#2ecc71';
+                setTimeout(() => {
+                    button.style.backgroundColor = '';
+                }, 1000);
+            } else {
+                button.style.backgroundColor = '#e74c3c';
+                setTimeout(() => {
+                    button.style.backgroundColor = '';
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
