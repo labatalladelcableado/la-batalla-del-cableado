@@ -30,7 +30,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
-        /* Estilos mejorados para la navegación principal */
         .main-nav {
             background: white;
             padding: 1.5rem 0;
@@ -96,7 +95,6 @@
             background-color: white;
         }
         
-        /* Colores de fondo diferentes para cada enlace */
         .nav-item:nth-child(1) .nav-link { background-color: #e3f2fd; }
         .nav-item:nth-child(2) .nav-link { background-color: #e8f5e9; }
         .nav-item:nth-child(3) .nav-link { background-color: #fff8e1; }
@@ -109,7 +107,6 @@
         .nav-item:nth-child(4) .nav-link:hover { background-color: #8e24aa; }
         .nav-item:nth-child(5) .nav-link:hover { background-color: #00acc1; }
 
-        /* Estilos para las secciones de contenido */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -224,7 +221,6 @@
             transform: translateY(-2px);
         }
         
-        /* Estilos mejorados para el quiz */
         .quiz-question {
             margin-bottom: 25px;
             padding: 15px;
@@ -573,73 +569,43 @@
             </div>
         </section>
         
-       <!-- Sección Videos -->
-<section id="videos" class="content-section">
-    <h2>Videos Tutoriales</h2>
+        <!-- Sección Videos -->
+        <section id="videos" class="content-section">
+            <h2>Videos Tutoriales</h2>
 
-    <h3>Cable Cruzado</h3>
-    <div class="video-container">
-        <iframe width="560" height="315" 
-            src="https://www.youtube.com/embed/BbGLp-QTtXE" 
-            title="Cable Cruzado" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
+            <h3>Cable Cruzado</h3>
+            <div class="video-container">
+                <iframe width="560" height="315" 
+                    src="https://www.youtube.com/embed/BbGLp-QTtXE" 
+                    title="Cable Cruzado" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <h3>Cable Directo (Recto)</h3>
+            <div class="video-container">
+                <iframe width="560" height="315" 
+                    src="https://www.youtube.com/embed/4XGvudb0FFc" 
+                    title="Cable Directo" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
     </div>
+    
+    <footer>
+        <div class="container">
+            <p>2025</p>
+            <p>Colegio San Ignacio de Loyola</p>
+        </div>
+    </footer>
 
-    <h3>Cable Directo (Recto)</h3>
-    <div class="video-container">
-        <iframe width="560" height="315" 
-            src="https://www.youtube.com/embed/4XGvudb0FFc" 
-            title="Cable Directo" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
-    </div>
-</section>
-
-        // Función para manejar el scroll suave
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 90,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Actualizar la URL
-                    history.pushState(null, null, targetId);
-                }
-            });
-        });
-        
-        // Resaltar enlace activo al hacer scroll
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY + 100;
-            
-            document.querySelectorAll('.content-section').forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${sectionId}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        });
-        
-        // Función mejorada para el quiz
+    <script>
+        // Función para el quiz
         function checkAnswer(button, result) {
             const questionDiv = button.parentElement;
             const buttons = questionDiv.querySelectorAll('.quiz-btn');
