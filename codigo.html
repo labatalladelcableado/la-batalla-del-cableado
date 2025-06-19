@@ -30,7 +30,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
-        /* Estilos mejorados para la navegación principal */
         .main-nav {
             background: white;
             padding: 1.5rem 0;
@@ -96,7 +95,6 @@
             background-color: white;
         }
         
-        /* Colores de fondo diferentes para cada enlace */
         .nav-item:nth-child(1) .nav-link { background-color: #e3f2fd; }
         .nav-item:nth-child(2) .nav-link { background-color: #e8f5e9; }
         .nav-item:nth-child(3) .nav-link { background-color: #fff8e1; }
@@ -109,7 +107,6 @@
         .nav-item:nth-child(4) .nav-link:hover { background-color: #8e24aa; }
         .nav-item:nth-child(5) .nav-link:hover { background-color: #00acc1; }
 
-        /* Estilos para las secciones de contenido */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -224,6 +221,61 @@
             transform: translateY(-2px);
         }
         
+        .quiz-question {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .quiz-btn {
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .correct {
+            background-color: #2ecc71 !important;
+            color: white !important;
+            animation: pulseCorrect 1s;
+        }
+        
+        .wrong {
+            background-color: #e74c3c !important;
+            color: white !important;
+            animation: pulseWrong 1s;
+        }
+        
+        @keyframes pulseCorrect {
+            0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
+        
+        @keyframes pulseWrong {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+        
+        .feedback {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct-feedback {
+            background-color: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+        
+        .wrong-feedback {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        
         .materials-grid {
             display: flex;
             flex-wrap: wrap;
@@ -316,7 +368,7 @@
             
             <h4>Pasos para construir un cable cruzado</h4>
             <ol>
-                <li>Cortar cubierta del cable a 15 o 6 cm de un extremo</li>
+                <li>Cortar cubierta del cable a 5 o 6 cm de un extremo</li>
                 <li>Cuando ya esté cortado dar un tirón rápidamente para que se desprenda</li>
                 <li>Separar los cuatro pares de cables trenzados:
                     <ul>
@@ -500,15 +552,19 @@
             
             <div class="quiz-section">
                 <h3>¿Sabes cuándo usar cada tipo de cable?</h3>
-                <div>
+                <div class="quiz-question">
                     <p>1. ¿Qué cable usarías para conectar una computadora a un switch?</p>
-                    <button class="btn" onclick="checkAnswer(this, 'correct')">Cable Directo</button>
-                    <button class="btn" onclick="checkAnswer(this, 'wrong')">Cable Cruzado</button>
+                    <button class="btn quiz-btn" onclick="checkAnswer(this, 'correct')">Cable Directo</button>
+                    <button class="btn quiz-btn" onclick="checkAnswer(this, 'wrong')">Cable Cruzado</button>
+                    <div class="feedback correct-feedback">✅ ¡Correcto! Para conectar dispositivos diferentes como PC a switch se usa cable directo.</div>
+                    <div class="feedback wrong-feedback">❌ Incorrecto. Para conectar PC a switch necesitas un cable directo.</div>
                 </div>
-                <div>
+                <div class="quiz-question">
                     <p>2. ¿Qué cable usarías para conectar dos computadoras directamente?</p>
-                    <button class="btn" onclick="checkAnswer(this, 'wrong')">Cable Directo</button>
-                    <button class="btn" onclick="checkAnswer(this, 'correct')">Cable Cruzado</button>
+                    <button class="btn quiz-btn" onclick="checkAnswer(this, 'wrong')">Cable Directo</button>
+                    <button class="btn quiz-btn" onclick="checkAnswer(this, 'correct')">Cable Cruzado</button>
+                    <div class="feedback correct-feedback">✅ ¡Excelente! Para conectar dos PCs directamente necesitas un cable cruzado.</div>
+                    <div class="feedback wrong-feedback">❌ No es correcto. Para conectar dos PCs necesitas un cable cruzado.</div>
                 </div>
             </div>
         </section>
@@ -516,72 +572,79 @@
         <!-- Sección Videos -->
         <section id="videos" class="content-section">
             <h2>Videos Tutoriales</h2>
-            <h3>Cómo hacer un cable directo</h3>
+
+            <h3>Cable Cruzado</h3>
             <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/BbGLp-QTtXE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" 
+                    src="https://www.youtube.com/embed/BbGLp-QTtXE" 
+                    title="Cable Cruzado" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
-            <h3>Cómo hacer un cable cruzado</h3>
-            
+
+            <h3>Cable Directo (Recto)</h3>
             <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/4XGvudb0FFc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" 
+                    src="https://www.youtube.com/embed/4XGvudb0FFc" 
+                    title="Cable Directo" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
             </div>
+        </section>
+    </div>
+    
     <footer>
         <div class="container">
-            <p>Colegio San Ignacio de Loyola</p>
-            <p>© 2025 La batalla del cableado</p>
+            <p>© 2023 Colegio San Ignacio de Loyola - Todos los derechos reservados</p>
+            <p>Proyecto de Redes - Chicaiza Erick & Coro Nathaly</p>
         </div>
     </footer>
+
     <script>
-        // Función para manejar el scroll suave
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 90,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Actualizar la URL
-                    history.pushState(null, null, targetId);
-                }
-            });
-        });
-        
-        // Resaltar enlace activo al hacer scroll
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY + 100;
-            
-            document.querySelectorAll('.content-section').forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${sectionId}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        });
-        
         // Función para el quiz
         function checkAnswer(button, result) {
+            const questionDiv = button.parentElement;
+            const buttons = questionDiv.querySelectorAll('.quiz-btn');
+            const correctFeedback = questionDiv.querySelector('.correct-feedback');
+            const wrongFeedback = questionDiv.querySelector('.wrong-feedback');
+            
+            // Deshabilitar todos los botones de la pregunta
+            buttons.forEach(btn => {
+                btn.disabled = true;
+            });
+            
             if (result === 'correct') {
-                button.style.backgroundColor = '#2ecc71';
+                // Efecto para respuesta correcta
+                button.classList.add('correct');
+                correctFeedback.style.display = 'block';
+                wrongFeedback.style.display = 'none';
+                
+                // Resetear estilos después de la animación
                 setTimeout(() => {
-                    button.style.backgroundColor = '';
+                    button.classList.remove('correct');
                 }, 1000);
             } else {
-                button.style.backgroundColor = '#e74c3c';
+                // Efecto para respuesta incorrecta
+                button.classList.add('wrong');
+                wrongFeedback.style.display = 'block';
+                
+                // Resaltar la respuesta correcta
+                buttons.forEach(btn => {
+                    if (btn.getAttribute('onclick').includes("'correct'")) {
+                        btn.classList.add('correct');
+                        setTimeout(() => {
+                            btn.classList.remove('correct');
+                        }, 1000);
+                    }
+                });
+                
+                // Resetear estilos después de la animación
                 setTimeout(() => {
-                    button.style.backgroundColor = '';
+                    button.classList.remove('wrong');
                 }, 1000);
             }
         }
